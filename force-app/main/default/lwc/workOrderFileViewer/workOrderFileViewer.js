@@ -1,30 +1,20 @@
-import { LightningElement } from 'lwc';
-import WorkOrderFileViewer from 'c/workOrderFileViewer';
+import { LightningElement, api, wire, track } from 'lwc';
+import { getRecord } from 'lightning/uiRecordApi';
 
-// Mock the lightning-file-card component
-jest.mock(
-    'lightning/fileCard',
-    () => ({
-        __esModule: true,
-        default: jest.fn()
-    }),
-    { virtual: true }
-);
+export default class WorkOrderFileViewer extends LightningElement {
+    @api recordId; // This will hold the Work Order Id
+    @track file;
+    @track error;
 
-describe('c-work-order-file-viewer', () => {
-    afterEach(() => {
-        while (document.body.firstChild) {
-            document.body.removeChild(document.body.firstChild);
+    // Wire adapter to fetch the related file
+    @wire(getRecord, { recordId: '$recordId', fields: ['WorkOrder.Pickup_Label_ContentVersion__c'] })
+    wiredRecord({ error, data }) {
+        if (data) {
+            this.file = data.fields.Pickup_Label_ContentVersion__c.value;
+            this.error = undefined;
+        } else if (error) {
+            this.error = error;
+            this.file = undefined;
         }
-        jest.clearAllMocks();
-    });
-
-    it('renders the file viewer', () => {
-        // Arrange
-        const element = createElement('c-work-order-file-viewer', { is: WorkOrderFileViewer });
-        document.body.appendChild(element);
-
-        // Assert
-        expect(element).toBeTruthy();
-    });
-});
+    }
+}
