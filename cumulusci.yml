@@ -1,0 +1,141 @@
+project:
+    name: solutionsTemplate
+    package:
+        name: solutionsTemplate
+        api_version: '58.0'
+    git:
+        default_branch: 'main'
+    source_format: sfdx
+
+    custom: 
+
+        exclude: &exclude-list
+        - FeatureParameter
+        - "AuraDefinition:"
+        - "SiteDotCom:"
+        - "ManagedTopics:"
+        - "LiveChatTranscript:"
+        - "ExperienceResource:"
+        - "AppMenu:"
+        - "Profile:"
+        - "FlowDefinition:"
+tasks:
+    robot:
+        options:
+            suites: robot/solutionsTemplate/tests
+            options:
+                outputdir: robot/solutionsTemplate/results
+
+    robot_testdoc:
+        options:
+            path: robot/solutionsTemplate/tests
+            output: robot/solutionsTemplate/doc/solutionsTemplate_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
+
+    load_dataset:
+        options:
+            ignore_row_errors: True
+            drop_missing_schema: True
+            set_recently_viewed: True
+
+    deploy:
+        options:
+            path: force-app
+
+    list_changes:
+        options:
+            exclude: *exclude-list
+
+    retrieve_changes:
+        options:
+            exclude: *exclude-list
+
+flows:
+
+    # Add Steps to this flow which need to run before the main deployment
+    preflight_deploy:
+        steps:
+            1:
+                task: None 
+
+    # Add Steps to this flow which run after the main deployment
+    post_deploy:
+        steps:
+            1:
+                task: None 
+
+    # ---------------------------
+    # Leave all these flows as is
+
+    solution_deploy:
+        steps:
+            1:
+                flow: preflight_deploy
+            2:
+                task: deploy
+            3:
+                flow: post_deploy
+
+    deploy_unmanaged_ee:
+        steps:
+            6:
+                task: None
+
+    deploy_unmanaged:
+        steps:
+            4:
+                task: None
+
+    dev_org:
+        steps:
+            1:
+                flow: solution_deploy
+            2:
+                task: None
+            3: 
+                task: None
+            4:
+                task: snapshot_changes
+
+    qa_org:
+        steps:
+            1:
+                flow: solution_deploy
+            2:
+                task: None
+            3: 
+                task: None
+            4:
+                task: snapshot_changes
+
+    config_dev:
+        steps:
+            1:
+                task: None
+            2:
+                task: None
+            3:
+                flow: post_qbrix_deploy
+
+    config_qa:
+        steps:
+            1:
+                task: None
+            2:
+                task: None
+            3:
+                flow: post_qbrix_deploy
+    
+orgs:
+  scratch:
+    dev:
+      config_file: orgs/dev.json
+      days: 30
+      namespaced: false
+    qa:
+      config_file: orgs/dev.json
+      days: 30
+      namespaced: false
