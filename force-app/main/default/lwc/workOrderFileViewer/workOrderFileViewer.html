@@ -1,8 +1,8 @@
 <template>
     <lightning-card title="Work Order File Viewer" icon-name="standard:file">
         <div class="slds-var-m-around_medium">
-            <template if:true={file}>
-                <lightning-file-card file-id={file.Id}></lightning-file-card>
+            <template if:true={fileId}>
+                <lightning:fileCard file-id={fileId}></lightning:fileCard>
             </template>
             <template if:true={error}>
                 <p>{error}</p>

@@ -1,20 +1,22 @@
-import { LightningElement, api, wire, track } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
 
-export default class WorkOrderFileViewer extends LightningElement {
-    @api recordId; // This will hold the Work Order Id
-    @track file;
-    @track error;
+const FIELDS = ['WorkOrder.Pickup_Label_ContentVersion__c'];
 
-    // Wire adapter to fetch the related file
-    @wire(getRecord, { recordId: '$recordId', fields: ['WorkOrder.Pickup_Label_ContentVersion__c'] })
+export default class WorkOrderFileViewer extends LightningElement {
+    @api recordId; // Work Order record ID
+
+    fileId;
+    error;
+
+    @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
     wiredRecord({ error, data }) {
         if (data) {
-            this.file = data.fields.Pickup_Label_ContentVersion__c.value;
+            this.fileId = data.fields.Pickup_Label_ContentVersion__c.value;
             this.error = undefined;
         } else if (error) {
             this.error = error;
-            this.file = undefined;
+            this.fileId = undefined;
         }
     }
 }
