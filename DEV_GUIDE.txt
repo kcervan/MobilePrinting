@@ -1,0 +1,25 @@
+CLASS
+
+- WorkOrderPDFGenerator > Launches using the flow mentioned below. Generates a PDF using the pages/WorkOrderLabel.page 
+as a template. Attaching it to the WorkOrder
+
+FLOWS 
+
+- Work_Order_Create_Pickup_Label - Calls the apex above when the Create_Pickup_Label is checked. This is set to run 
+this on create or update of the WorkOrder.
+
+LWC
+
+- When there is a ContentVersion ID on the record, held in Pickup_Label_ContentVersion__c, it will give the option 
+to open the label (aka PDF). This will open in the native app for the device, providing access to print controls. If
+there is no ContentVersion ID in the field, then the component shows a button to generate one. This updates the
+Create_Pickup_Label__c field to true, which forces the flow to run. 
+
+PAGES 
+
+- HTML Template for the PDF to be generated. This is attached to the standard controller for WorkOrder so it will have 
+access to the fields on WorkOrder and can be updated to reflect the required template. 
+
+NOTE THAT EVERTHING ABOVE HAS SHARING APPLIED
+
+
