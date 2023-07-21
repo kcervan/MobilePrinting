@@ -16,7 +16,7 @@ public class WorkOrderPDFGenerator {
                 workOrdersToUpdate.add(workOrder);
 
                 // Create the Visualforce page URL
-                String pageUrl = '/apex/WorkOrderPickupLabel?id=' + workOrderId;
+                String pageUrl = '/apex/WorkOrderLabel?id=' + workOrderId;
 
                 // Generate the PDF content
                 PageReference pageRef = new PageReference(pageUrl);

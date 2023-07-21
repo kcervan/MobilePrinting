@@ -1,6 +1,13 @@
 {
-  "orgName": "solutionsTemplate - Dev Org",
+  "orgName": "LWC WorkOrder Build - Dev Org",
   "edition": "Developer",
+  "features": [
+    "FieldService:1",
+    "FieldServiceDispatcherUser:1",
+    "FieldServiceMobileUser:1",
+    "FieldServiceSchedulingUser:1",
+    "LightningScheduler"
+  ],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
