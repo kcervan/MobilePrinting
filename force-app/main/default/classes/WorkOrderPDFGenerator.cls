@@ -1,4 +1,5 @@
-public class WorkOrderPDFGenerator {
+public  class WorkOrderPDFGenerator {
+
     @InvocableMethod(label='Generate Work Order PDF' description='Generates a PDF and updates the Work Order')
     public static List<WorkOrderPDFResult> generatePDFAndSave(List<WorkOrderPDFRequest> requests) {
         List<ContentVersion> contentVersions = new List<ContentVersion>();
@@ -68,4 +69,5 @@ public class WorkOrderPDFGenerator {
             this.ContentVersionId = contentVersionId;
         }
     }
+
 }

@@ -1,7 +1,9 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
 import FORM_FACTOR from '@salesforce/client/formFactor';
- 
+import { refreshApex } from '@salesforce/apex';
+import { updateRecord } from 'lightning/uiRecordApi';
+
 
 const FIELDS = ['WorkOrder.Pickup_Label_ContentVersion__c'];
 
@@ -44,5 +46,24 @@ export default class WorkOrderFileViewer extends LightningElement {
           window.open(this.url, '_blank');
         }
       }
+
+      generatePDFAndSave() {
+        const fields = {};
+        fields.Id = this.recordId; // Set the record Id
+        fields.Create_Pickup_Label__c = true; // Set the field value to true
+
+        // Update the record
+        updateRecord({ fields })
+            .then(() => {
+                // Record is updated successfully
+                console.log('Record updated successfully');
+            })
+            .catch(error => {
+                // Handle any errors that may occur during the update
+                console.error('Error updating record:', error);
+            });
+    }
+
+      
 
 }
