@@ -1,0 +1,5 @@
+<apex:page showHeader="false" standardStylesheets="false" standardController="WorkOrder">
+
+    <h1>Label for {! WorkOrder.WorkOrderNumber }</h1>
+    
+</apex:page>

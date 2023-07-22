@@ -20,7 +20,7 @@
         <inputParameters>
             <name>WorkOrderId</name>
             <value>
-                <stringValue>0WO4C0000087ucBWAQ</stringValue>
+                <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
         <nameSegment>WorkOrderPDFGenerator</nameSegment>
@@ -100,9 +100,16 @@
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
+        <filters>
+            <field>Pickup_Label_ContentVersion__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
         <object>WorkOrder</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
 </Flow>

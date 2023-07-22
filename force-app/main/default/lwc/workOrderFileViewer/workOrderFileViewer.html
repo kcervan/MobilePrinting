@@ -1,12 +1,22 @@
 <template>
-    <lightning-card title="Work Order File Viewer" icon-name="standard:file">
-        <div class="slds-var-m-around_medium">
-            <template if:true={fileId}>
-                <lightning:fileCard file-id={fileId}></lightning:fileCard>
+    <lightning-card title="Work Order Label" icon-name="standard:file">
+        <template if:true={url}>
+            <div class="slds-card__body slds-card__body_inner container">
+                <lightning-icon icon-name="utility:print" alternative-text="Print" title="Print"></lightning-icon>
+                <p class="slds-p-horizontal_small">Label Generated, click Open Label to open and print</p>
+                
+            </div>
+            <template if:true={isMobile}>
+                <iframe src={url} style="width: 100%; height: 40rem"></iframe>
             </template>
-            <template if:true={error}>
-                <p>{error}</p>
-            </template>
-        </div>
+            <lightning-button label="Open Label" title="Open Label" onclick={handleClick} slot="actions"></lightning-button>
+        </template>
+        <template if:false={url}>
+            <div class="slds-card__body slds-card__body_inner container">
+                <lightning-icon icon-name="utility:alert" alternative-text="Alert" title="Alert"></lightning-icon>
+                <p class="slds-p-horizontal_small">No Label has been generated for this Work Order</p>
+            </div>
+            <lightning-button label="Generate Label" title="Generate Label" onclick={generatePDFAndSave} slot="actions"></lightning-button>
+        </template>
     </lightning-card>
 </template>
