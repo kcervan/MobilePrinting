@@ -3,11 +3,11 @@
  <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Project Title</h3>
+<h3 align="center">LWC Print Label</h3>
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> Printing a label from LWC to be used in the field service mobile app. 
     <br> 
 </p>
 
@@ -20,8 +20,6 @@
 - [Authors](#authors)
 
 ## 🧐 About <a name = "about"></a>
-
-Write about 1-2 paragraphs describing the purpose of your project.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -70,5 +68,11 @@ To deploy this solution:
 - [Python](https://www.python.org/downloads/) - Software Platform
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
+## 📚 Resources <a name = "resources"></a>
+Field Service Mobile + LWC Offline Trailblazer Group: (https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000GwNLSA0)
+Salesforce Help Article: (https://help.salesforce.com/s/articleView?id=sf.mfs_overview_lwc.htm&type=5)
+Great SFS Mobile + LWC Guide by Derek Anderson: (https://org62.my.salesforce.com/sfc/p/#000000000062/a/3y000002FJwH/hsCEmnlg7cusBaZKYUjpPfjpoNnKX8bV1HSTZ5fQZAA)
+
 ## ✍️ Authors <a name = "authors"></a>
+
 
