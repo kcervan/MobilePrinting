@@ -6,12 +6,14 @@
     <targets>
         <target>lightning__RecordAction</target>
         <target>lightning__RecordPage</target>
+       <target>lightning__GlobalAction</target>
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordAction">
-            <objects>
-                <object>WorkOrder</object>
-            </objects>
+            <actionType>ScreenAction</actionType>
+        </targetConfig>
+        <targetConfig targets="lightning__GlobalAction">
+            <actionType>ScreenAction</actionType>
         </targetConfig>
         <targetConfig targets="lightning__RecordPage">
             <supportedFormFactors>
