@@ -7,7 +7,7 @@ import { updateRecord } from 'lightning/uiRecordApi';
 
 const FIELDS = ['WorkOrder.Pickup_Label_ContentVersion__c'];
 
-export default class WorkOrderFileViewer extends LightningElement {
+export default class WorkOrderFileViewer extends NavigationMixin(LightningElement) {
     @api recordId;
     url;
     isMobile = false;
