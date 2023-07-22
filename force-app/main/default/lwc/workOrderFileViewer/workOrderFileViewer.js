@@ -31,7 +31,13 @@ export default class WorkOrderFileViewer extends NavigationMixin(LightningElemen
         } else if (data) {
             this.CurrentRecord = data;
             if (this.CurrentRecord.fields.Pickup_Label_ContentVersion__c.value) {
-                this.url = '/sfc/servlet.shepherd/version/download/' + this.CurrentRecord.fields.Pickup_Label_ContentVersion__c.value;
+                this.NavigationMixin.Navigate
+                {
+                    "type": "standard__webPage",
+                    "attributes": {
+                        "url": `com.salesforce.fieldservice://v1/sObject/${this.CurrentRecord.fields.Pickup_Label_ContentVersion__c.value}`
+                    }
+                }+ this.e;
             }
             if (FORM_FACTOR == 'Small') {
                 this.isMobile = true;
