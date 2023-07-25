@@ -3,11 +3,12 @@ import { getRecord } from 'lightning/uiRecordApi';
 import FORM_FACTOR from '@salesforce/client/formFactor';
 import { refreshApex } from '@salesforce/apex';
 import { updateRecord } from 'lightning/uiRecordApi';
+import { NavigationMixin } from "lightning/navigation";
 
 
 const FIELDS = ['WorkOrder.Pickup_Label_ContentVersion__c'];
 
-export default class WorkOrderFileViewer extends LightningElement {
+export default class WorkOrderFileViewer extends NavigationMixin(LightningElement) {
     @api recordId;
     url;
     isMobile = false;
@@ -40,7 +41,7 @@ export default class WorkOrderFileViewer extends LightningElement {
             }
         }
     }
-    
+
     handleClick() {
         if (this.url) {
           window.open(this.url, '_blank');
@@ -64,6 +65,16 @@ export default class WorkOrderFileViewer extends LightningElement {
             });
     }
 
-      
+    navigateToWebPage() {
+        this[NavigationMixin.Navigate](
+          {
+            type: "standard__webPage",
+            attributes: {
+              url: this.url,
+            },
+          },
+          true,
+        );
+      }
 
 }

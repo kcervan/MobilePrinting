@@ -8,8 +8,11 @@
             </div>
             <template if:true={isMobile}>
                 <iframe src={url} style="width: 100%; height: 40rem"></iframe>
+                <lightning-button label="Open Label" title="Open Label on Mobile" onclick={navigateToWebPage} slot="actions"></lightning-button>
             </template>
-            <lightning-button label="Open Label" title="Open Label" onclick={handleClick} slot="actions"></lightning-button>
+            <template if:false={isMobile}>
+                <lightning-button label="Open Label" title="Open Label" onclick={handleClick} slot="actions"></lightning-button>
+            </template>
         </template>
         <template if:false={url}>
             <div class="slds-card__body slds-card__body_inner container">

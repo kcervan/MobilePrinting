@@ -9,12 +9,6 @@
        <target>lightning__GlobalAction</target>
     </targets>
     <targetConfigs>
-        <targetConfig targets="lightning__RecordAction">
-            <actionType>ScreenAction</actionType>
-        </targetConfig>
-        <targetConfig targets="lightning__GlobalAction">
-            <actionType>ScreenAction</actionType>
-        </targetConfig>
         <targetConfig targets="lightning__RecordPage">
             <supportedFormFactors>
                 <supportedFormFactor type="Large" />
