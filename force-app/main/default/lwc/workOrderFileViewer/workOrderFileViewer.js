@@ -70,7 +70,7 @@ export default class WorkOrderFileViewer extends NavigationMixin(LightningElemen
           {
             type: "standard__webPage",
             attributes: {
-              url: this.url,
+              url: `com.salesforce.fieldservice://v1/sObject/${this.CurrentRecord.fields.Pickup_Label_ContentVersion__c.value}`,
             },
           },
           true,
