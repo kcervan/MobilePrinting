@@ -1,0 +1,48 @@
+/+ContentDocumentVersionId
+    FAIL: Page Error
+/+ContentDocumentVersionId
+    FAIL: Page Error
+
+standard__namedPage
+    FAIL: not supported type 
+
+com.salesforce.fieldservice://v1/sObject/<id>/details
+    com.salesforce.fieldservice://v1/sObject/ContentVersionId/details
+        com.salesforce.fieldservice://v1/sObject/0684C000002QgS7QAK/details
+            FAIL: Lands on Content Version Details Tab without ability to view the file
+    com.salesforce.fieldservice://v1/sObject/ContentId/details
+        com.salesforce.fieldservice://v1/sObject/0694C000002QilpQAC/details
+            FAIL: 'Oops An error occurred' error page
+
+com.salesforce.fieldservice://v1/sObject/<id>
+    com.salesforce.fieldservice://v1/sObject/ContentVersionId
+        com.salesforce.fieldservice://v1/sObject/0684C000002QgS7QAK // file on Grant WO
+            FAIL: Lands on Content Version Details Tab without ability to view the file
+    com.salesforce.fieldservice://v1/sObject/ContentId
+        com.salesforce.fieldservice://v1/sObject/0694C000002QilpQAC  //file on Grant WO
+            FAIL: 'Oops An error occurred' error page
+    com.salesforce.fieldservice://v1/sObject/OpportunityId
+        com.salesforce.fieldservice://v1/sObject/0064W00001GeaUKQAZ
+            PASS: Takes you to the opp page within the field service mobile app, cool! But not exactly helpful for right now. 
+
+com.salesforce.fieldservice://v1/sObject/<id>/products //should only work on products but worth a try!
+    com.salesforce.fieldservice://v1/sObject/sObject/WorkOrderId/files
+        com.salesforce.fieldservice://v1/sObject/0WO4W000001GPjXWAW/files 
+            FAIL: Takes you back to the work order Overview page :(
+        com.salesforce.fieldservice://v1/sObject/0WO4W000001GPjXWAW/AttachedContentDocuments
+
+            
+
+com.salesforce.fieldservice://v1/sObject/<id>/related
+    com.salesforce.fieldservice://v1/sObject/WorkOrderId/related
+        com.salesforce.fieldservice://v1/sObject/0WO4W000001GPjXWAW/related
+            FAIL: Takes you back to the work order Overview page :(
+    com.salesforce.fieldservice://v1/sObject/WorkOrderId/related/AttachedContentDocuments/view //what desktop uses
+        com.salesforce.fieldservice://v1/sObject/0WO4W000001GPjXWAW/related/AttachedContentDocuments/view
+            EH: Takes you to the Related list in the Field Service Mobile app
+        com.salesforce.fieldservice://v1/sObject/0WO4W000001GPjXWAW/AttachedContentDocuments/view
+            FAIL: Takes you back to the work order Overview page :(
+        com.salesforce.fieldservice://v1/sObject/0WO4W000001GPjXWAW/related/AttachedContentDocuments
+            EH: Takes you to the Related list in the Field Service Mobile app
+
+
